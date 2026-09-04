@@ -1,0 +1,63 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the thesis below. The individual stages have their own publications, listed under references."
+title: "Deep Learning-based Grading of Cell Nuclei in Histopathological Image Data"
+abstract: "Three-stage pipeline for WHO/ISUP grading of clear cell renal cell carcinoma from H&E stained whole slide images, covering nuclei segmentation and grading, classifier-driven autoencoder representation learning, and Vision Transformer whole-patch grading."
+type: software
+authors:
+  - family-names: ADD_FAMILY_NAME
+    given-names: ADD_GIVEN_NAME
+    orcid: "https://orcid.org/ADD_ORCID"
+    affiliation: ADD_AFFILIATION
+repository-code: "https://github.com/ADD_USER/ADD_REPO_NAME"
+license: CC-BY-4.0
+date-released: ADD_YYYY-MM-DD
+keywords:
+  - computational pathology
+  - renal cell carcinoma
+  - nuclei grading
+  - autoencoder
+  - vision transformer
+  - WHO/ISUP
+
+preferred-citation:
+  type: thesis
+  title: "Deep Learning-based Grading of Cell Nuclei in Histopathological Image Data"
+  thesis-type: "Master's thesis"
+  authors:
+    - family-names: ADD_FAMILY_NAME
+      given-names: ADD_GIVEN_NAME
+  institution:
+    name: ADD_INSTITUTION
+  year: ADD_YEAR
+  url: "ADD_THESIS_URL"
+
+references:
+  - type: conference-paper
+    title: "ADD_ICIP_TITLE"
+    authors:
+      - family-names: ADD_FAMILY_NAME
+        given-names: ADD_GIVEN_NAME
+      - name: "ADD_REMAINING_AUTHORS"
+    collection-title: "IEEE International Conference on Image Processing (ICIP)"
+    year: 2024
+    doi: ADD_ICIP_DOI
+
+  - type: conference-paper
+    title: "Comparative Analysis of Unsupervised and Supervised Autoencoders for Nuclei Classification in Clear Cell Renal Cell Carcinoma Images"
+    authors:
+      - family-names: ADD_FAMILY_NAME
+        given-names: ADD_GIVEN_NAME
+      - name: "ADD_REMAINING_AUTHORS"
+    collection-title: "IEEE International Symposium on Biomedical Imaging (ISBI)"
+    year: 2025
+    doi: ADD_ISBI_DOI
+
+  - type: conference-paper
+    title: "Semantic-Guided Multimodal Preprocessing for Vision Transformer-Based CCRCC Grading"
+    authors:
+      - family-names: ADD_FAMILY_NAME
+        given-names: ADD_GIVEN_NAME
+      - name: "ADD_REMAINING_AUTHORS"
+    collection-title: "MICCAI COMPAYL++ Workshop"
+    year: 2026
+    doi: ADD_MICCAI_DOI
