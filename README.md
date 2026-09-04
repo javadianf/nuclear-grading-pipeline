@@ -1,4 +1,4 @@
-# Deep Learning-based Grading of Cell Nuclei in Histopathological Image Data
+# **Meta repository:**  Deep Learning-based Grading of Cell Nuclei in Histopathological Image Data
 
 Umbrella repository for a three-stage pipeline that grades clear cell renal cell carcinoma
 (ccRCC) from H&E stained whole slide images, from individual nuclei up to the grade reported
