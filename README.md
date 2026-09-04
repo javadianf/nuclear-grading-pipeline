@@ -15,7 +15,6 @@ grades every nucleus inside each patch, and finally grades the whole patch by co
 nuclei classification map with the tissue image. The output is a per-patch grade distribution
 for the pathologist rather than a single hard label.
 
-s
 
 ## Publications
 
