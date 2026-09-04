@@ -15,32 +15,33 @@ grades every nucleus inside each patch, and finally grades the whole patch by co
 nuclei classification map with the tissue image. The output is a per-patch grade distribution
 for the pathologist rather than a single hard label.
 
+s
+
 ## Publications
 
 | Venue | Contribution | Stage | DOI |
 | --- | --- | --- | --- |
-| ICIP 2024 | Composite segmentation and classification network with auxiliary H-channel, center loss and class-weighted loss (HCH-Network) | Stage 1 | `ADD_ICIP_TITLE_AND_DOI` |
-| ISBI 2025 | Comparative Analysis of Unsupervised and Supervised Autoencoders for Nuclei Classification in Clear Cell Renal Cell Carcinoma Images | Stage 2 | `ADD_ISBI_DOI` |
-| MICCAI COMPAYL++ 2026 | Semantic-Guided Multimodal Preprocessing for Vision Transformer-Based CCRCC Grading | Stage 3 | `ADD_MICCAI_DOI` |
+| ICIP 2024 | Deep Learning Approach for Renal Cell Carcinoma Detection, Subtyping, and Grading | Stage 1 | [10.1109/ICIP51287.2024.10647236](https://doi.org/10.1109/ICIP51287.2024.10647236) |
+| ISBI 2025 | Comparative Analysis of Unsupervised and Supervised Autoencoders for Nuclei Classification in Clear Cell Renal Cell Carcinoma Images | Stage 2 | [10.1109/ISBI60581.2025.10981207](https://doi.org/10.1109/ISBI60581.2025.10981207) |
+| MICCAI COMPAYL++ 2026 | Semantic-Guided Multimodal Preprocessing for Vision Transformer-Based CCRCC Grading | Stage 3 | [10.48550/arXiv.2609.01426](https://doi.org/10.48550/arXiv.2609.01426) |
 
-PhD thesis: *Deep Learning-based Grading of Cell Nuclei in Histopathological Image Data*.
+Master's thesis: *Deep Learning-based Grading of Cell Nuclei in Histopathological Image Data*.
 
-## Component repositories
+## Repositories
 
-| Repository | Stage | What it contains |
-| --- | --- | --- |
-| [`ADD_ISBI_REPO_NAME`](https://github.com/ADD_USER/ADD_ISBI_REPO_NAME) | Stage 2 | Four autoencoder variants (AE, CAE, DAE, CDAE) in MLP and CNN form, the training entry points and the data loading for per-nucleus grading |
-| [`ADD_MICCAI_REPO_NAME`](https://github.com/ADD_USER/ADD_MICCAI_REPO_NAME) | Stage 3 | HEC and multiplicative modulation preprocessing, ViT fine-tuning, sensitivity analysis and MLflow experiment tracking for whole-patch grading |
+| Repository | Subject |
+| --- | --- |
+| [`representation-learning-autoencoders`](https://github.com/javadianf/representation-learning-autoencoders) | Autoencoder representation learning for per-nucleus grading. Four variants (AE, CAE, DAE, CDAE) in MLP and CNN form, with the Optuna architecture search, the training entry points and the nuclei patch data loading. |
+| [`classification-semantic-fusion-vit-HP`](https://github.com/javadianf/classification-semantic-fusion-vit-HP) | Semantic-guided preprocessing and Vision Transformer fine-tuning for whole-patch grading. HEC and multiplicative modulation, the perturbation-based sensitivity analysis and MLflow experiment tracking. |
 
-Stage 1 was produced inside a group project and has no public repository. It is documented here
-because the rest of the pipeline is built on top of it and compared against it.
+The two repositories are independent. Each has its own environment, its own
+dataset preparation and its own license, and neither imports the other. What
+connects them is the data contract: the autoencoder consumes instance-masked
+nuclei patches and emits a per-nucleus grade, and those grades are written back
+into a class map that the transformer consumes as its semantic channel.
 
-The two repositories are independent. Each has its own environment, its own dataset preparation
-and its own license, and neither imports the other. What connects them is the data contract: the
-autoencoder consumes instance-masked nuclei patches and emits a per-nucleus grade, and those
-grades are written back into a class map that the transformer consumes as its semantic channel.
 
-## The problem
+## Motivation
 
 WHO/ISUP grading of ccRCC is decided by nuclear morphology, mainly by whether the nucleolus is
 visible and how prominent it is. Three properties of that task drive every design decision below.
@@ -117,8 +118,8 @@ as a sample check rather than as a metric.
 
 ## Stage 2: classifier-driven autoencoder for per-nucleus grading
 
-Repository: [`ADD_ISBI_REPO_NAME`](https://github.com/ADD_USER/ADD_ISBI_REPO_NAME).
-Paper: ISBI 2025.
+Repository: [`representation-learning-autoencoders`](https://github.com/javadianf/representation-learning-autoencoders).
+Paper: [ISBI 2025](https://doi.org/10.1109/ISBI60581.2025.10981207).
 
 ### Data preparation
 
@@ -181,8 +182,8 @@ weakest separation in both forms, which is the expected result rather than a tun
 pixel-level variance is driven by nucleus size and stain intensity, not by nucleolar prominence.
 
 <p align="center">
-  <img src="figures/ae.png" alt="PCA of AE latent space" width="380">
-  <img src="figures/cdae.png" alt="PCA of CDAE latent space" width="380">
+  <img src="figures/ae.png" alt="PCA of AE latent space" height="330">
+  <img src="figures/cdae.png" alt="PCA of CDAE latent space" height="330">
 </p>
 
 First three PCA components of the latent space. Left: plain AE. Right: CDAE-CNN. Grade 4 in the
@@ -227,8 +228,8 @@ discards the spatial context the CHR-Network can use.
 
 ## Stage 3: Vision Transformer for whole-patch grading
 
-Repository: [`ADD_MICCAI_REPO_NAME`](https://github.com/ADD_USER/ADD_MICCAI_REPO_NAME).
-Paper: MICCAI COMPAYL++ 2026.
+Repository: [`classification-semantic-fusion-vit-HP`](https://github.com/javadianf/classification-semantic-fusion-vit-HP).
+Paper: [MICCAI COMPAYL++ 2026](https://doi.org/10.48550/arXiv.2609.01426).
 
 Fine-grained nuclei classifiers and coarse-grained patch classifiers stay isolated in the
 literature. Fine-grained methods collapse per-nucleus predictions into a patch grade by max
@@ -355,7 +356,17 @@ Full reference lists are in the individual repositories and in the thesis.
 ## Citation
 
 ```bibtex
-ADD_BIBTEX_FOR_THESIS_AND_THREE_PAPERS
+@INPROCEEDINGS{10981207,
+  author={Javadian, Fatemeh and Aminparast, Zahra and Stegmaier, Johannes and Jose, Abin},
+  booktitle={2025 IEEE 22nd International Symposium on Biomedical Imaging (ISBI)}, 
+  title={Comparative Analysis of Unsupervised and Supervised Autoencoders for Nuclei Classification in Clear Cell Renal Cell Carcinoma Images}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-5},
+  keywords={Visualization;Accuracy;Microprocessors;Autoencoders;Supervised learning;Computer architecture;Neural architecture search;Tuning;Standards;Tumors;Contractive Autoencoder;Classifier Discriminative Autoencoder;Hyperparameter Optimization;Nuclei Grading;Optuna;Fine-grained Classification;Neural Architecture Search},
+  doi={10.1109/ISBI60581.2025.10981207}}
+
 ```
 
 ## License
